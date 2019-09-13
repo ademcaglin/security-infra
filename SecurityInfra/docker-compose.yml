@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  securityinfra.identityserver.web:
+    image: ${DOCKER_REGISTRY-}securityinfraidentityserverweb
+    build:
+      context: .
+      dockerfile: src/identityserver/SecurityInfra.IdentityServer.Web/Dockerfile

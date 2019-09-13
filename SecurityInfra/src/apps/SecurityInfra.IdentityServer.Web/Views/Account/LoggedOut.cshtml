@@ -1,0 +1,10 @@
+﻿<div class="page-header logged-out">
+    <h4>
+        Oturum Kapatıldı
+        <small>Oturumunuz sonlandırıldı</small>
+    </h4>
+    @if (ViewBag.SignOutIframeUrl != null)
+    {
+        <iframe width="0" height="0" class="signout" src="@ViewBag.SignOutIframeUrl"></iframe>
+    }
+</div>

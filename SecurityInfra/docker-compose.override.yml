@@ -1,0 +1,60 @@
+version: '3.4'
+
+services:
+  securityinfra.identityserver.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CONFIGURATIONDB_CONSTR=mongodb://securityinfra.mongodb:27017
+      - IDENTITYDB_CONSTR=mongodb://securityinfra.mongodb:27017
+      - USERACTIVITY_CONSTR=http://securityinfra.elasticsearch:9200/
+      - IDPCERTIFICATE_FILENAME=/var/certs/${IDPCERTIFICATE_FILENAME}
+      - IDPCERTIFICATE_FILEPWD=${IDPCERTIFICATE_FILEPWD}
+      - REDIS_HOST=securityinfra.redis
+      - REDIS_PORT=6379
+      - EDEVLET_CLIENTID=8a9caaa3-04f1-43f3-93bd-b92d5155165c
+      - EDEVLET_CLIENTSECRET=${EDEVLET_CLIENTSECRET}
+      - EDEVLET_AUTHORIZEENDPOINT=https://test.turkiye.gov.tr/OAuth2AuthorizationServer/AuthorizationController
+      - EDEVLET_TOKENENDPOINT=http://gw.esb.turkiye.gov.tr:8282/oauth/AccesTokenController
+      - EDEVLET_USERINFOENDPOINT=http://gw.esb.turkiye.gov.tr:8282/oauth/ResourceController
+      - LDAP_ADMINUSERNAME=${LDAP_ADMINUSERNAME}
+      - LDAP_ADMINUSERPASSWORD=${LDAP_ADMINUSERPASSWORD}
+    ports:
+      - "49908:80"
+    depends_on:
+      - securityinfra.mongodb
+      - securityinfra.redis
+    networks:
+      - mongodb_network
+      - redis_network
+    volumes:
+      - ${IDPCERTIFICATE_FILEPATH}:/var/certs
+  securityinfra.elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    environment: ['http.host=0.0.0.0', 'transport.host=127.0.0.1']
+    ports: ['127.0.0.1:9200:9200']
+    networks:
+      - elastic_network 
+  securityinfra.mongodb:
+    image: mongo:latest
+    ports: ['27017:27017']
+    networks:
+      - mongodb_network 
+  securityinfra.redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - redis_network
+  securityinfra.rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "15672:15672"  
+      - "5672:5672"  
+
+networks:
+  mongodb_network:
+    driver: bridge
+  redis_network:
+    driver: bridge
+  elastic_network:
+    driver: bridge

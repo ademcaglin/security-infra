@@ -1,0 +1,31 @@
+{
+  "simple_implicit": {
+    "_id": "implicit",
+    "Enabled": true,
+    "ClientSecrets": [],
+    "ClientName": "Implicit Sample",
+    "RequireConsent": false,
+    "AllowRememberConsent": true,
+    "AllowedGrantTypes": [
+      "implicit"
+    ],
+    "AllowAccessTokensViaBrowser": false,
+    "RedirectUris": [
+      "http://localhost:5005/signin-oidc"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://localhost:5005/signout-callback-oidc"
+    ],
+    "AllowOfflineAccess": false,
+    "AllowedScopes": [
+      "openid",
+      "profile"
+    ],
+    "AccessTokenLifetime": 3600,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "AllowedCorsOrigins": [],
+    "UserStoreUri": null,
+    "ApplicationName": null
+  }
+
+}

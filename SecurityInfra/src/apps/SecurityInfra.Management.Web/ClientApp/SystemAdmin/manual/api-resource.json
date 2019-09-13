@@ -1,0 +1,17 @@
+{
+  "_id": "ades",
+  "DisplayName": "ADES",
+  "Description": "ADES",
+  "UserClaims": [],
+  "ApiSecrets": [],
+  "Scopes": [
+    {
+      "Name": "ades",
+      "DisplayName": "Örnek Uygulama Tam Denetim",
+      "Description": "Örnek Uygulama Tam Denetim",
+      "Required": false,
+      "UserClaims": null
+    }
+  ],
+  "ApplicationName": "DBYS"
+}

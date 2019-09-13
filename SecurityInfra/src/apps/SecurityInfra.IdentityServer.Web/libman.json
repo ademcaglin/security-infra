@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "destination": "wwwroot/lib/js",
+      "library": "jquery@3.3.1",
+      "files": [ "jquery.slim.min.js" ]
+    },
+    {
+      "destination": "wwwroot/lib",
+      "library": "twitter-bootstrap@4.2.1",
+      "files": [ "js/bootstrap.min.js", "css/bootstrap.min.css" ]
+    },
+    //{
+    //  "destination": "wwwroot/lib",
+    //  "library": "datatables@1.10.19",
+    //  "files": [ "css/jquery.dataTables.min.css", "css/dataTables.bootstrap4.min.css", "js/jquery.dataTables.min.js", "js/dataTables.bootstrap4.min.js" ]
+    //},
+    {
+      "destination": "wwwroot/lib/js",
+      "library": "popper.js@1.14.6",
+      "files": [ "umd/popper.min.js" ]
+    },
+    {
+      "provider": "filesystem",
+      "destination": "wwwroot/lib/css",
+      "library": "Assets/css/tabler.css",
+      "files": [ "tabler.css" ]
+    },
+    {
+      "provider": "filesystem",
+      "destination": "wwwroot/img",
+      "library": "Assets/img/ekapilogo.2030.svg",
+      "files": [ "ekapilogo.2030.svg" ]
+    },
+    {
+      "provider": "filesystem",
+      "destination": "wwwroot/lib/fonts/feather",
+      "library": "Assets/fonts/feather/",
+      "files": [ "feather-webfont.eot", "feather-webfont.svg", "feather-webfont.ttf", "feather-webfont.woff" ]
+    }
+  ]
+}

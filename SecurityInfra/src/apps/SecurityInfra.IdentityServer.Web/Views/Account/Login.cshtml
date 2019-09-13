@@ -1,0 +1,51 @@
+﻿@model SecurityInfra.IdentityServer.Web.ViewModels.LoginModel
+<div class="page">
+    <div class="page-single">
+        <div class="container">
+            <div class="row">
+                <div class="col col-login mx-auto">
+                    <form class="card"  asp-route="Login" method="post">
+                        <div class="card-body p-6">
+                            <div class="card-title">Ulaştırma ve Altyapı Bakanlığı Giriş</div>
+                            <div class="form-group">
+                                <a href="/account/externallogin/?provider=EDevlet&returnUrl=@Model.ReturnUrl">
+                                    <div style="background-color:brown;margin-top:40px;max-height:100px;margin-bottom:30px">
+                                        <img src="/img/ekapilogo.2030.svg" />
+                                        @*<div style="color:white;padding-left:33%;font-size:26px;padding-bottom:10px;margin-top:-30px;font-weight:600">
+                                            e-devlet giriş
+                                        </div>*@
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Kullanıcı Adı</label>
+                                <input type="text" asp-for="Username" class="form-control" placeholder="Kullanıcı adı giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Şifre
+                                    <a href="#" class="float-right small">Şifremi unuttum</a>
+                                </label>
+                                <input type="password" asp-for="Password" class="form-control" placeholder="Şifre girin">
+                            </div>
+                            <div class="form-group">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                            </div>
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                                @if (!Model.IsLocalContext)
+                                {
+                                    <button class="btn btn-danger" name="button" value="cancel">Vazgeç</button>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                    <div class="text-center text-muted">
+                        Ulaştırma ve Altyapı Bakanlığı @DateTime.Now.Year
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
